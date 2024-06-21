@@ -9,13 +9,13 @@ import tempfile # For creating temporary files and directories
 import os # For interacting with the operating system
 
 
-PROJECT_ID "ххххххххххх" #Your Vertex AI project ID
+PROJECT_ID = "ххххххххххх" #Your Vertex AI project ID
 
-REGION "us-central1" # Region where your Vertex AI resources are located
+REGION = "us-central1" # Region where your Vertex AI resources are located
 
 # Initialize Vertex AI SDK
 
-vertexai.init(project-PROJECT_ID, location-REGION)
+vertexai.init(project=PROJECT_ID, location-REGION)
 
 def generate_response (prompt,image_file):
     #Load the image from file
