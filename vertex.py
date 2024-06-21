@@ -60,7 +60,7 @@ def main():
         #Input area for user's question 
     st.header(": violet[Question]") 
     question = st.text_area(label="Enter your question") 
-    submit st.button("Submit")
+    submit=st.button("Submit")
 
     if question and submit:
 
