@@ -1,6 +1,6 @@
 import streamlit as st
 
-from vertexai.preview.generative_models import GenerativeModel, Image Importing GenerativeModel and Image classes
+from vertexai.preview.generative_models import GenerativeModel, Image #Importing GenerativeModel and Image classes
 
 import vertexai # Importing Vertex AI SDK
 
