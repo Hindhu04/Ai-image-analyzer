@@ -18,59 +18,62 @@ REGION = "us-central1" # Region where your Vertex AI resources are located
 vertexai.init(project=PROJECT_ID, location=REGION)
 
 def generate_response (prompt,image_file):
+  
     #Load the image from file
 
-image = Image.load_from_file(image_file)
+    image = Image.load_from_file(image_file)
 
-#Initialize the GenerativeModel with a specific model 
-generative_multimodal_model = GenerativeModel("gemini-1.0-pro-vision")
+  #Initialize the GenerativeModel with a specific model 
+    generative_multimodal_model = GenerativeModel("gemini-1.0-pro-vision")
 
-#Generate content based on the prompt and image 
-response = generative_multimodal_model.generate_content([prompt, image])
+  #Generate content based on the prompt and image 
+    response = generative_multimodal_model.generate_content([prompt, image])
 
-#Return the generated response
+  #Return the generated response
 
-return response.candidates[0].content.text
+    return response.candidates[0].content.text
 def main():
+    
 
-#Set the title and display logo 
-st.title("Vertex Al with Gemini Pro Vision") 
-st.image("logo.jpg", width-100)
+       #Set the title and display logo 
+    st.title("Vertex Al with Gemini Pro Vision") 
+    st.image("logo.jpg", width-100)
 
-#Allow users to upload an image 
-img=st.file_uploader("Upload an image")
+      #Allow users to upload an image 
+    img=st.file_uploader("Upload an image")
 
-#If an image is uploaded
+          #If an image is uploaded
 
-if img:
+    if img:
 
-#Create a temporary directory 
-temp_dir = tempfile.mkdtemp()
+        #Create a temporary directory 
+        temp_dir = tempfile.mkdtemp()
 
-#Define the path to save the uploaded image 
-path=os.path.join(temp_dir, img.name)
+         #Define the path to save the uploaded image 
+        path=os.path.join(temp_dir, img.name)
 
-#Write the uploaded image to the specified path 
-with open(path, "wb") as f:
-    f.write(img.getvalue())
+           #Write the uploaded image to the specified path 
+        with open(path, "wb") as f:
 
-#Input area for user's question 
-st.header(": violet[Question]") 
-question = st.text_area(label="Enter your question") 
-submit st.button("Submit")
+            f.write(img.getvalue())
 
-if question and submit:
+        #Input area for user's question 
+    st.header(": violet[Question]") 
+    question = st.text_area(label="Enter your question") 
+    submit st.button("Submit")
 
-#Generate a response based on the question and uploaded image 
-response=generate_response(question, path)
+    if question and submit:
 
-#Display the generated response
+        #Generate a response based on the question and uploaded image 
+        response=generate_response(question, path)
 
-st.header("Answer")
+            #Display the generated response
 
-st.write(response)
+        st.header("Answer")
 
-#Entry point of the script
+        st.write(response)
+
+        #Entry point of the script
 
 if __name__ =="__main__": 
     main()
